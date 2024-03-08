@@ -23,7 +23,16 @@ node_types:
     physical_networks:
       - physnet1
     console_log_enabled: true
-
+  storage:
+    memory_mb: 8192
+    vcpus: 2
+    physical_networks:
+      - physnet1
+    volumes:
+      - name: ceph-storage
+        capacity: 15GiB
+      - name: ceph-os-storage
+        capacity: 20Gib
 specs:
   - type: controller
     count: 3
@@ -36,6 +45,12 @@ specs:
     node_name_prefix: compute
     ironic_config:
       resource_class: test-rc
+      network_interface: noop
+  - type: storage
+    count: 3
+    node_name_prefix: storage
+    ironic_config:
+      resource_class: test_rc
       network_interface: noop
 
 ipmi_address: 192.168.33.4

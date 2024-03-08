@@ -6,7 +6,7 @@
 
 set -eu
 
-BASE_PATH=~/KT/
+BASE_PATH=~/KT
 KAYOBE_ENVIRONMENT=training
 
 PULP_HOST="10.205.3.187 pulp-server pulp-server.internal.sms-cloud"
