@@ -12,7 +12,7 @@ KAYOBE_CONFIG_BRANCH=stackhpc/2023.1
 ##########################################################################
 
 # These parameters may be changed if you wish to deviate from the defaults
-BASE_PATH=~/KT/
+BASE_PATH=~/KT
 KAYOBE_BRANCH=stackhpc/2023.1
 KAYOBE_ENVIRONMENT=training
 

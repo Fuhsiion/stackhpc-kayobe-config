@@ -6,7 +6,7 @@
 
 set -eu
 
-BASE_PATH=~/KT/
+BASE_PATH=~/KT
 KAYOBE_ENVIRONMENT=training
 
 PULP_HOST="10.205.3.187 pulp-server pulp-server.internal.sms-cloud"
@@ -57,29 +57,29 @@ $KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/configure-local-networking.
 # ./dev/tenks-deploy-overcloud.sh ./tenks)
 
 # Inspect and provision the overcloud hardware:
-#kayobe overcloud inventory discover
-#kayobe overcloud provision
+#kayobe overcloud inventory discover 
+#kayobe overcloud provision 
 kayobe overcloud host configure
-kayobe overcloud container image pull
-kayobe overcloud service deploy
-source $KOLLA_CONFIG_PATH/admin-openrc.sh
-kayobe overcloud post configure
-source $KOLLA_CONFIG_PATH/admin-openrc.sh
+#kayobe overcloud container image pull --kolla-tags ceph
+#kayobe overcloud service deploy --kolla-tags ceph
+#source $KOLLA_CONFIG_PATH/admin-openrc.sh
+#kayobe overcloud post configure --kolla-tags ceph
+#source $KOLLA_CONFIG_PATH/admin-openrc.sh
 
 # Run init-runonce.sh to create test elements in the openstack deployment
-set +u
-deactivate
-set -u
-$KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/init-runonce.sh
+#set +u
+#deactivate
+#set -u
+#$KAYOBE_CONFIG_PATH/environments/$KAYOBE_ENVIRONMENT/init-runonce.sh
 
 # Create a test vm
-VENV_DIR=$BASE_PATH/venvs/os-venv
-source $VENV_DIR/bin/activate
-source $KOLLA_CONFIG_PATH/admin-openrc.sh
-echo "Creating test vm:"
-openstack server create --key-name mykey --flavor m1.tiny --image cirros --network demo-net test-vm-1
-echo "Attaching floating IP:"
-openstack floating ip create public1
-openstack server add floating ip test-vm-1 `openstack floating ip list -c ID  -f value`
-echo -e "Done! \nopenstack server list:"
-openstack server list
+#VENV_DIR=$BASE_PATH/venvs/os-venv
+#source $VENV_DIR/bin/activate
+#source $KOLLA_CONFIG_PATH/admin-openrc.sh
+#echo "Creating test vm:"
+#openstack server create --key-name mykey --flavor m1.tiny --image cirros --network demo-net test-vm-1
+#echo "Attaching floating IP:"
+#openstack floating ip create public1
+#openstack server add floating ip test-vm-1 `openstack floating ip list -c ID  -f value`
+#echo -e "Done! \nopenstack server list:"
+#openstack server list
