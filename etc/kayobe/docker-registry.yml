@@ -25,7 +25,7 @@ docker_registry_enabled: false
 #docker_registry_datadir_volume:
 
 # Whether to enable TLS for the registry. Default is false.
-#docker_registry_enable_tls:
+docker_registry_enable_tls: false
 
 # Path to a TLS certificate to use when TLS is enabled. Default is none.
 #docker_registry_cert_path:
